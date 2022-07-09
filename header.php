@@ -41,47 +41,57 @@
 
 <body <?php body_class(); ?>>
 	<?php wp_body_open(); ?>
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top d-flex align-items-center">
-    <div class="container d-flex justify-content-between">
-				<?php
-				the_custom_logo();
-				if (is_front_page() && is_home()) :
-				?>
-					<h1 class="img-fluid"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></h1>
-				<?php
-				else :
-				?>
-					<p class="img-fluid"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></p>
-				<?php
-				endif;
-				$atcone_description = get_bloginfo('description', 'display');
-				if ($atcone_description || is_customize_preview()) :
-				?>
-					<p class="site-description"><?php echo $atcone_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
-												?></p>
-				<?php endif; ?>
-			</div><!-- .site-branding -->
-
-			<nav id="navbar" class="navbar">
+	<!-- ======= Header ======= -->
+	<header id="header" class="fixed-top d-flex align-items-center">
+		<div class="container d-flex justify-content-between">
 			<?php
-								$menu_name = 'Primary Menu';
-								// primary-menu
-								$menu_items = wp_get_nav_menu_items($menu_name);
-								
-								$menu_list = '	<ul>';
-								foreach ((array) $menu_items as $key => $menu_item) {
-									$title = $menu_item->title;
-									$url = $menu_item->url;
-									$menu_list .= '<li><a class="nav-link scrollto';
-									if (str_ends_with($url, $_SERVER['REQUEST_URI']) && !str_ends_with(home_url('/'), $_SERVER['REQUEST_URI'])) $menu_list .= " active";
-									$menu_list .= '" href="' . $url . '">' . $title . '</a>
-									</li>';
-								}
-								$menu_list .= '</ul>';
-								echo $menu_list;
-								?>
-        <i class="bi bi-list mobile-nav-toggle"></i>
+			the_custom_logo();
+			if (is_front_page() && is_home()) :
+			?>
+				<h1 class="img-fluid"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></h1>
+			<?php
+			else :
+			?>
+				<p class="img-fluid"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></p>
+			<?php
+			endif;
+			$atcone_description = get_bloginfo('description', 'display');
+			if ($atcone_description || is_customize_preview()) :
+			?>
+				<p class="site-description"><?php echo $atcone_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
+											?></p>
+			<?php endif; ?>
+		</div><!-- .site-branding -->
 
-			</nav><!-- #site-navigation -->
-		</header><!-- #masthead -->
+		<nav id="navbar" class="navbar">
+			<?php
+			$menu_name = 'Primary Menu';
+			// primary-menu
+			$menu_items = wp_get_nav_menu_items($menu_name);
+
+			$menu_list = '	<ul>';
+			foreach ((array) $menu_items as $key => $menu_item) {
+				$title = $menu_item->title;
+				$url = $menu_item->url;
+				$menu_list .= '<li><a class="nav-link scrollto';
+				if (str_ends_with($url, $_SERVER['REQUEST_URI']) && !str_ends_with(home_url('/'), $_SERVER['REQUEST_URI'])) $menu_list .= " active";
+				$menu_list .= '" href="' . $url . '">' . $title . '</a>
+									</li>';
+			}
+			$menu_list .= '</ul>';
+			echo $menu_list;
+			?>
+			<i class="bi bi-list mobile-nav-toggle"></i>
+
+		</nav><!-- #site-navigation -->
+	</header><!-- #masthead -->
+
+
+	<!-- ======= Hero Section ======= -->
+	<section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+		<div class="container text-center text-md-left" data-aos="fade-up">
+			<h1>Welcome to Maxim</h1>
+			<h2>We are team of talented designers making websites with Bootstrap</h2>
+			<a href="#about" class="btn-get-started scrollto">Get Started</a>
+		</div>
+	</section><!-- End Hero -->
